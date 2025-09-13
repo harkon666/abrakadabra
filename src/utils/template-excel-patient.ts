@@ -14,9 +14,11 @@ const EXCEL_COLUMNS: ExcelColumn[] = [
   { header: "Birth Date", width: 25, alignment: { horizontal: "center" } },
   { header: "Phone", width: 25, alignment: { horizontal: "center" } },
   { header: "Gender", width: 25, alignment: { horizontal: "center" } },
+  { header: "Haid", width: 25, alignment: { horizontal: "center" } },
   { header: "Unit", width: 25, alignment: { horizontal: "center" } },
   { header: "Departement", width: 25, alignment: { horizontal: "center" } },
   { header: "CustomerId", width: 30, alignment: { horizontal: "center" } },
+  { header: "packageId", width: 30, alignment: { horizontal: "center" } },
 ];
 
 const configureWorksheetStyling = (
@@ -40,7 +42,7 @@ export async function patientTemplateExcel(customerId: string) {
   const headerRow = worksheet.getRow(1);
 
   // Style header row
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 12; i++) {
     headerRow.getCell(i).fill = {
       type: "pattern",
       pattern: "solid",
@@ -58,9 +60,11 @@ export async function patientTemplateExcel(customerId: string) {
     "13-04-2025",
     "081234567890",
     "1",
+    "No",
     "IT",
     "DIVISI IT",
     customerId,
+    "package-id"
   ];
 
   const exampleRow = worksheet.addRow(exampleData);

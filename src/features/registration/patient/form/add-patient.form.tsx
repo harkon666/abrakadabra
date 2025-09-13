@@ -14,6 +14,7 @@ import { useAddPatientMutation } from "@/services/queries/patient";
 import { ToastSuccess } from "@/utils/toast";
 import { useNavigate } from "@tanstack/react-router";
 import { CustomerAutocompleteFormField } from "../autocomplete/customer.autocomplete";
+import { PackageAutocompleteFormField } from "@/features/database/package/autocomplete/package.autocomplete";
 import { cn } from "@/lib/utils";
 import { gColorWhBg, rColorWhBg } from "@/utils/color";
 import { FieldPregnantRadio } from "@/components/common/pregnant.field";
@@ -36,6 +37,8 @@ export function AddPatientForm({ setOpen }: TProps) {
       pregnant: "",
       unit: "",
       email: "",
+      haid: "",
+      packageId: ""
     },
   });
 
@@ -62,6 +65,7 @@ export function AddPatientForm({ setOpen }: TProps) {
       ["password"]: values.ktp.slice(-8),
       ["birthDate"]: values.birthDate.split("-").reverse().join("-"),
       ["isPregnant"]: values.pregnant === "1" ? true : false,
+      ["isHaid"]: values.haid === "1" ? true : false,
     };
     delete patientData.pregnant;
 
@@ -130,6 +134,14 @@ export function AddPatientForm({ setOpen }: TProps) {
             loading={false}
             disabled={gender === "1" || !gender}
           />
+          <FieldPregnantRadio
+            form={form}
+            label="Haid"
+            name="haid"
+            loading={false}
+            disabled={gender === "1" || !gender}
+          />
+          <PackageAutocompleteFormField form={form} />
           <ReusableFormField
             form={form}
             name="departement"

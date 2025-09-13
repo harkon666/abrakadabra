@@ -10,6 +10,8 @@ export const patientFormSchema = z.object({
   phone: z.string().min(1, { message: "Phone Number is required" }),
   gender: z.string().min(1, { message: "Please at least choose one gender" }),
   pregnant: z.string().optional(),
+  haid: z.string().optional(),
+  packageId: z.string().optional(),
   departement: z.string().min(1, { message: "Departement is required!" }),
   unit: z.string().min(1, { message: "Unit is required!" }),
   email: z.string().min(1, { message: "Email is required!" }).email(),
